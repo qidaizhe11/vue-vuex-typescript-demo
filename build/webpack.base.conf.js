@@ -15,15 +15,16 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    publicPath:
+      process.env.NODE_ENV === 'production'
         ? config.build.assetsPublicPath
         : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.ts', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      vue$: 'vue/dist/vue.esm.js',
+      '@': resolve('src')
     }
   },
   module: {
@@ -37,6 +38,12 @@ module.exports = {
           formatter: require('eslint-friendly-formatter')
         }
       },
+      // {
+      //   test: /\.ts$/,
+      //   loader: 'tslint-loader',
+      //   enforce: 'pre',
+      //   exclude: /node_modules/
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',

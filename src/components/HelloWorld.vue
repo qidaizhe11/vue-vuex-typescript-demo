@@ -32,6 +32,7 @@ export default Vue.extend({
   },
   mounted () {
     this.hello()
+    const a = '11'
   },
   methods: {
     hello () {

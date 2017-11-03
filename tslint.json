@@ -1,0 +1,9 @@
+{
+  "extends": "tslint-config-standard",
+  "globals": {
+    "require": true
+  },
+  "rules": {
+    "no-consecutive-blank-lines": false
+  }
+}
