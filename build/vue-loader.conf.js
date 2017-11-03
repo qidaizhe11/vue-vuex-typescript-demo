@@ -1,18 +1,16 @@
 'use strict'
+const merge = require('webpack-merge')
 const utils = require('./utils')
 const config = require('../config')
 const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  loaders: Object.assign(
-    {},
-    utils.cssLoaders({
+  loaders: merge(utils.cssLoaders({
       sourceMap: isProduction
         ? config.build.productionSourceMap
         : config.dev.cssSourceMap,
       extract: isProduction
-    }),
-    {
+    }), {
       ts: ['ts-loader', 'tslint-loader']
     }
   ),
