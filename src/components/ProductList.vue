@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="p in products">
+    <li v-for="p in products" :key="p.id">
       {{ p.title }} - {{ p.price | currency }}
       <br>
       <button
