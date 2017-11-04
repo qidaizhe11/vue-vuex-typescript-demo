@@ -10,22 +10,6 @@ Vue.use(Vuex)
 
 // const debug = process.env.NODE_ENV !== 'production'
 
-export interface ActionContextBasic {
-  commit: Commit,
-  dispatch: Dispatch
-}
-
-export interface State {
-  cart: CardState,
-  products: ProductsState
-}
-
-export interface CartProduct {
-  title: string,
-  price: number,
-  quantity: number
-}
-
 export default new Vuex.Store({
   actions,
   getters,
@@ -36,3 +20,28 @@ export default new Vuex.Store({
   // strict: debug,
   // plugins: debug ? [createLogger()] : []
 })
+
+export interface ActionContextBasic {
+  commit: Commit,
+  dispatch: Dispatch
+}
+
+export interface State {
+  cart: CardState,
+  products: ProductsState
+}
+
+export type CheckoutStatus = 'successful' | 'failed' | null
+
+export interface Product {
+  id: number,
+  title: string,
+  price: number,
+  inventory: number
+}
+
+export interface CartProduct {
+  title: string,
+  price: number,
+  quantity: number
+}

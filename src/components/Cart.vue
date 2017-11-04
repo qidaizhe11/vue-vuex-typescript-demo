@@ -16,23 +16,31 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
-import { CartProduct } from '../store'
+import { CartProduct, CheckoutStatus } from '../store'
+import { dispatchCheckout } from '../store/actions'
 
 export default Vue.extend({
   computed: {
-    ...mapGetters({
-      products: 'cartProducts',
-      checkoutStatus: 'checkoutStatus'
-    }),
+    // ...mapGetters({
+    //   products: 'cartProducts',
+    //   checkoutStatus: 'checkoutStatus'
+    // }),
+    products (): CartProduct[] {
+      return this.$store.getters.cartProducts
+    },
+    checkoutStatus (): CheckoutStatus {
+      return this.$store.getters.checkoutStatus
+    },
     total (): number {
-      return this.products.reduce((total: number, p: CartProduct) => {
+      return this.products.reduce((total, p) => {
         return total + p.price * p.quantity
       }, 0)
     }
   },
   methods: {
     checkout (products: CartProduct[]) {
-      this.$store.dispatch('checkout', products)
+      // this.$store.dispatch('checkout', products)
+      dispatchCheckout(products)
     }
   }
 })

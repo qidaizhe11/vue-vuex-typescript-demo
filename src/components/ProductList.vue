@@ -15,14 +15,26 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
+import { Product } from '../store'
+import { actionAddToCart } from '../store/actions'
 
 export default Vue.extend({
-  computed: mapGetters({
-    products: 'allProducts'
-  }),
-  methods: mapActions([
-    'addToCart'
-  ]),
+  computed: {
+    // ...mapGetters({
+    //   products: 'allProducts'
+    // })
+    products (): Product[] {
+      return this.$store.getters.allProducts
+    }
+  },
+  methods: {
+    // ...mapActions([
+    //   'addToCart'
+    // ])
+    addToCart (p: Product) {
+      actionAddToCart(p)
+    }
+  },
   created () {
     this.$store.dispatch('getAllProducts')
   }

@@ -10,13 +10,6 @@ const _products = [
   { 'id': 3, 'title': 'Charli XCX - Sucker CD', 'price': 19.99, 'inventory': 5 }
 ]
 
-export interface Product {
-  id: number,
-  title: string,
-  price: number,
-  inventory: number
-}
-
 export default {
   getProducts (cb: Function) {
     setTimeout(() => cb(_products), 100)

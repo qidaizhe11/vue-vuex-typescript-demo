@@ -1,6 +1,6 @@
-import shop, { Product } from '../../api/shop'
+import shop from '../../api/shop'
 import * as types from '../mutation-types'
-import { ActionContextBasic } from '../index'
+import { ActionContextBasic, Product } from '../index'
 import { AddToCartPayload } from '../actions'
 
 export interface ProductsPayload {

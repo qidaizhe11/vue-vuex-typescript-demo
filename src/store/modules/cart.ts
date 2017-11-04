@@ -2,7 +2,7 @@ import { Commit } from 'vuex'
 import shop from '../../api/shop'
 import * as types from '../mutation-types'
 import { AddToCartPayload } from '../actions'
-import { CartProduct } from '../index'
+import { CartProduct, CheckoutStatus } from '../index'
 
 interface Shape {
   id: number
@@ -15,7 +15,7 @@ interface CheckoutFailurePayload {
 
 export interface State {
   added: Shape[]
-  checkoutStatus: 'successful' | 'failed' | null
+  checkoutStatus: CheckoutStatus
 }
 
 // initial state
