@@ -1,6 +1,9 @@
 /**
  * Mocking client-server processing
  */
+
+import { CartProduct } from '../store'
+
 const _products = [
   { 'id': 1, 'title': 'iPad 4 Mini', 'price': 500.01, 'inventory': 2 },
   { 'id': 2, 'title': 'H&M T-Shirt White', 'price': 10.99, 'inventory': 10 },
@@ -15,11 +18,11 @@ export interface Product {
 }
 
 export default {
-  getProducts (cb: any) {
+  getProducts (cb: Function) {
     setTimeout(() => cb(_products), 100)
   },
 
-  buyProducts (products: Product[], cb: any, errorCb: any) {
+  buyProducts (products: CartProduct[], cb: Function, errorCb: Function) {
     setTimeout(() => {
       // simulate random checkout failure.
       (Math.random() > 0.5 || navigator.userAgent.indexOf('PhantomJS') > -1)

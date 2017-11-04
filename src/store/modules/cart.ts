@@ -1,7 +1,8 @@
 import { Commit } from 'vuex'
-import shop, { Product } from '../../api/shop'
+import shop from '../../api/shop'
 import * as types from '../mutation-types'
 import { AddToCartPayload } from '../actions'
+import { CartProduct } from '../index'
 
 interface Shape {
   id: number
@@ -31,7 +32,7 @@ const getters = {
 
 // actions
 const actions = {
-  checkout (context: { commit: Commit, state: State }, products: Product[]) {
+  checkout (context: { commit: Commit, state: State }, products: CartProduct[]) {
     const failurePayload: CheckoutFailurePayload = {
       savedCartItems: [...context.state.added]
     }
