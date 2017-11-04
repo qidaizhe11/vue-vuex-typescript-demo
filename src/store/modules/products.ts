@@ -39,7 +39,10 @@ const mutations = {
   },
 
   [types.ADD_TO_CART] (state: State, payload: AddProductPayload) {
-    state.all.find((p: Product) => p.id === payload.id).inventory--
+    const product = state.all.find((p: Product) => p.id === payload.id)
+    if (product) {
+      product.inventory--
+    }
   }
 }
 
