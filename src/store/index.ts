@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex, { Commit, Dispatch } from 'vuex'
-// import * as actions from './actions'
+import actions from './actions'
 import getters from './getters'
 import cart, { State as CardState } from './modules/cart'
 import products, { State as ProductsState } from './modules/products'
@@ -27,7 +27,7 @@ export interface CartProduct {
 }
 
 export default new Vuex.Store({
-  // actions,
+  actions,
   getters,
   modules: {
     cart,
