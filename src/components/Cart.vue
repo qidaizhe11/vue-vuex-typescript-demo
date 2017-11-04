@@ -13,25 +13,27 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { mapGetters } from 'vuex'
+import { CartProduct } from '../store'
 
-export default {
+export default Vue.extend({
   computed: {
     ...mapGetters({
       products: 'cartProducts',
       checkoutStatus: 'checkoutStatus'
     }),
-    total () {
-      return this.products.reduce((total, p) => {
+    total (): number {
+      return this.products.reduce((total: number, p: CartProduct) => {
         return total + p.price * p.quantity
       }, 0)
     }
   },
   methods: {
-    checkout (products) {
+    checkout (products: CartProduct[]) {
       this.$store.dispatch('checkout', products)
     }
   }
-}
+})
 </script>

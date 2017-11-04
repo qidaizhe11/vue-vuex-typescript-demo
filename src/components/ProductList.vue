@@ -12,10 +12,11 @@
   </ul>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 
-export default {
+export default Vue.extend({
   computed: mapGetters({
     products: 'allProducts'
   }),
@@ -25,5 +26,5 @@ export default {
   created () {
     this.$store.dispatch('getAllProducts')
   }
-}
+})
 </script>
