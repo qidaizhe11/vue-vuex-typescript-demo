@@ -1,13 +1,10 @@
 import shop, { Product } from '../../api/shop'
 import * as types from '../mutation-types'
 import { ActionContextBasic } from '../index'
+import { AddToCartPayload } from '../actions'
 
 export interface ProductsPayload {
   products: Product[]
-}
-
-export interface AddProductPayload {
-  id: number
 }
 
 export interface State {
@@ -39,7 +36,7 @@ const mutations = {
     state.all = payload.products
   },
 
-  [types.ADD_TO_CART] (state: State, payload: AddProductPayload) {
+  [types.ADD_TO_CART] (state: State, payload: AddToCartPayload) {
     const product = state.all.find(p => p.id === payload.id)
     if (product) {
       product.inventory--

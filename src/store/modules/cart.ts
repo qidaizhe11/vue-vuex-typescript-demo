@@ -1,23 +1,20 @@
 import { Commit } from 'vuex'
 import shop, { Product } from '../../api/shop'
 import * as types from '../mutation-types'
+import { AddToCartPayload } from '../actions'
 
 interface Shape {
   id: number
   quantity: number
 }
 
+interface CheckoutFailurePayload {
+  savedCartItems: Shape[]
+}
+
 export interface State {
   added: Shape[]
   checkoutStatus: 'successful' | 'failed' | null
-}
-
-export interface AddProductPayload {
-  id: number
-}
-
-export interface CheckoutFailurePayload {
-  savedCartItems: Shape[]
 }
 
 // initial state
@@ -49,7 +46,7 @@ const actions = {
 
 // mutations
 const mutations = {
-  [types.ADD_TO_CART] (state: State, payload: AddProductPayload) {
+  [types.ADD_TO_CART] (state: State, payload: AddToCartPayload) {
     state.checkoutStatus = null
     const record = state.added.find(p => p.id === payload.id)
     if (!record) {

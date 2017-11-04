@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex, { Commit, Dispatch } from 'vuex'
-import * as actions from './actions'
-import * as getters from './getters'
+// import * as actions from './actions'
+import getters from './getters'
 import cart, { State as CardState } from './modules/cart'
 import products, { State as ProductsState } from './modules/products'
 // import createLogger from '../../../src/plugins/logger'
@@ -26,13 +26,13 @@ export interface CartProduct {
   quantity: number
 }
 
-// export default new Vuex.Store({
-//   actions,
-//   getters,
-//   modules: {
-//     cart,
-//     products
-//   }
-//   // strict: debug,
-//   // plugins: debug ? [createLogger()] : []
-// })
+export default new Vuex.Store({
+  // actions,
+  getters,
+  modules: {
+    cart,
+    products
+  }
+  // strict: debug,
+  // plugins: debug ? [createLogger()] : []
+})
