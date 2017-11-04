@@ -2,26 +2,37 @@ import Vue from 'vue'
 import Vuex, { Commit, Dispatch } from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
-import cart from './modules/cart'
-import products from './modules/products'
-import createLogger from '../../../src/plugins/logger'
+import cart, { State as CardState } from './modules/cart'
+import products, { State as ProductsState } from './modules/products'
+// import createLogger from '../../../src/plugins/logger'
 
 Vue.use(Vuex)
 
-const debug = process.env.NODE_ENV !== 'production'
+// const debug = process.env.NODE_ENV !== 'production'
 
 export interface ActionContextBasic {
   commit: Commit,
   dispatch: Dispatch
 }
 
-export default new Vuex.Store({
-  actions,
-  getters,
-  modules: {
-    cart,
-    products
-  },
-  strict: debug,
-  plugins: debug ? [createLogger()] : []
-})
+export interface State {
+  cart: CardState,
+  products: ProductsState
+}
+
+export interface CartProduct {
+  title: string,
+  price: number,
+  quantity: number
+}
+
+// export default new Vuex.Store({
+//   actions,
+//   getters,
+//   modules: {
+//     cart,
+//     products
+//   }
+//   // strict: debug,
+//   // plugins: debug ? [createLogger()] : []
+// })
