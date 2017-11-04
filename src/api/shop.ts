@@ -7,12 +7,19 @@ const _products = [
   { 'id': 3, 'title': 'Charli XCX - Sucker CD', 'price': 19.99, 'inventory': 5 }
 ]
 
+export interface Product {
+  id: number,
+  title: string,
+  price: number,
+  inventory: number
+}
+
 export default {
   getProducts (cb: any) {
     setTimeout(() => cb(_products), 100)
   },
 
-  buyProducts (products: any, cb: any, errorCb: any) {
+  buyProducts (products: Product[], cb: any, errorCb: any) {
     setTimeout(() => {
       // simulate random checkout failure.
       (Math.random() > 0.5 || navigator.userAgent.indexOf('PhantomJS') > -1)
