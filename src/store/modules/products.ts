@@ -1,6 +1,17 @@
-import shop from '../../api/shop'
+import shop, { Product } from '../../api/shop'
 import * as types from '../mutation-types'
-import { Product } from '../../api/shop'
+
+export interface State {
+  all: Product[]
+}
+
+export interface ProductsPayload {
+  products: Product[]
+}
+
+export interface AddProductPayload {
+  id: number
+}
 
 // initial state
 const state = {
@@ -9,13 +20,13 @@ const state = {
 
 // getters
 const getters = {
-  allProducts: state => state.all
+  allProducts: (state: State) => state.all
 }
 
 // actions
 const actions = {
   getAllProducts ({ commit }) {
-    shop.getProducts(products => {
+    shop.getProducts((products: Product[]) => {
       commit(types.RECEIVE_PRODUCTS, { products })
     })
   }
@@ -23,12 +34,12 @@ const actions = {
 
 // mutations
 const mutations = {
-  [types.RECEIVE_PRODUCTS] (state, { products }) {
-    state.all = products
+  [types.RECEIVE_PRODUCTS] (state: State, payload: ProductsPayload) {
+    state.all = payload.products
   },
 
-  [types.ADD_TO_CART] (state, { id }) {
-    state.all.find(p => p.id === id).inventory--
+  [types.ADD_TO_CART] (state: State, payload: AddProductPayload) {
+    state.all.find((p: Product) => p.id === payload.id).inventory--
   }
 }
 
