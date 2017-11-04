@@ -1,4 +1,5 @@
-import shop from '../../api/shop'
+import { Commit } from 'vuex'
+import shop, { Product } from '../../api/shop'
 import * as types from '../mutation-types'
 
 interface Shape {
@@ -9,6 +10,14 @@ interface Shape {
 export interface State {
   added: Shape[]
   checkoutStatus: 'successful' | 'failed' | null
+}
+
+export interface AddProductPayload {
+  id: number
+}
+
+export interface CheckoutFailurePayload {
+  savedCartItems: Shape[]
 }
 
 // initial state
@@ -25,25 +34,27 @@ const getters = {
 
 // actions
 const actions = {
-  checkout ({ commit, state }, products) {
-    const savedCartItems = [...state.added]
-    commit(types.CHECKOUT_REQUEST)
+  checkout (context: { commit: Commit, state: State }, products: Product[]) {
+    const failurePayload: CheckoutFailurePayload = {
+      savedCartItems: [...context.state.added]
+    }
+    context.commit(types.CHECKOUT_REQUEST)
     shop.buyProducts(
       products,
-      () => commit(types.CHECKOUT_SUCCESS),
-      () => commit(types.CHECKOUT_FAILURE, { savedCartItems })
+      () => context.commit(types.CHECKOUT_SUCCESS),
+      () => context.commit(types.CHECKOUT_FAILURE, failurePayload)
     )
   }
 }
 
 // mutations
 const mutations = {
-  [types.ADD_TO_CART] (state: State, { id }) {
+  [types.ADD_TO_CART] (state: State, payload: AddProductPayload) {
     state.checkoutStatus = null
-    const record = state.added.find(p => p.id === id)
+    const record = state.added.find(p => p.id === payload.id)
     if (!record) {
       state.added.push({
-        id,
+        id: payload.id,
         quantity: 1
       })
     } else {
@@ -61,9 +72,9 @@ const mutations = {
     state.checkoutStatus = 'successful'
   },
 
-  [types.CHECKOUT_FAILURE] (state: State, { savedCartItems }) {
+  [types.CHECKOUT_FAILURE] (state: State, payload: CheckoutFailurePayload) {
     // rollback to the cart saved before sending the request
-    state.added = savedCartItems
+    state.added = payload.savedCartItems
     state.checkoutStatus = 'failed'
   }
 }

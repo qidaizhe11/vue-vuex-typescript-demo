@@ -1,9 +1,6 @@
 import shop, { Product } from '../../api/shop'
 import * as types from '../mutation-types'
-
-export interface State {
-  all: Product[]
-}
+import { ActionContextBasic } from '../index'
 
 export interface ProductsPayload {
   products: Product[]
@@ -11,6 +8,10 @@ export interface ProductsPayload {
 
 export interface AddProductPayload {
   id: number
+}
+
+export interface State {
+  all: Product[]
 }
 
 // initial state
@@ -25,9 +26,9 @@ const getters = {
 
 // actions
 const actions = {
-  getAllProducts ({ commit }) {
+  getAllProducts (context: ActionContextBasic) {
     shop.getProducts((products: Product[]) => {
-      commit(types.RECEIVE_PRODUCTS, { products })
+      context.commit(types.RECEIVE_PRODUCTS, { products })
     })
   }
 }
