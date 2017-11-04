@@ -4,6 +4,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
+import { currency } from './currency'
+
+Vue.filter('currency', currency)
+
 Vue.config.productionTip = false
 
 /* tslint:disable no-unused-expression */
