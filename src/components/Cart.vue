@@ -17,31 +17,54 @@
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import { CartProduct, CheckoutStatus } from '../store'
-import { dispatchCheckout } from '../store/dispatches'
 
-export default Vue.extend({
-  computed: {
-    // ...mapGetters({
-    //   products: 'cartProducts',
-    //   checkoutStatus: 'checkoutStatus'
-    // }),
-    products (): CartProduct[] {
-      return this.$store.getters.cartProducts
-    },
-    checkoutStatus (): CheckoutStatus {
-      return this.$store.getters.checkoutStatus
-    },
-    total (): number {
-      return this.products.reduce((total, p) => {
-        return total + p.price * p.quantity
-      }, 0)
-    }
-  },
-  methods: {
-    checkout (products: CartProduct[]) {
-      // this.$store.dispatch('checkout', products)
-      dispatchCheckout(products)
-    }
+// import { dispatchCheckout } from '../store/dispatches'
+
+// export default Vue.extend({
+//   computed: {
+//     // ...mapGetters({
+//     //   products: 'cartProducts',
+//     //   checkoutStatus: 'checkoutStatus'
+//     // }),
+//     products (): CartProduct[] {
+//       return this.$store.getters.cartProducts
+//     },
+//     checkoutStatus (): CheckoutStatus {
+//       return this.$store.getters.checkoutStatus
+//     },
+//     total (): number {
+//       return this.products.reduce((total, p) => {
+//         return total + p.price * p.quantity
+//       }, 0)
+//     }
+//   },
+//   methods: {
+//     checkout (products: CartProduct[]) {
+//       // this.$store.dispatch('checkout', products)
+//       dispatchCheckout(products)
+//     }
+//   }
+// })
+
+import Component from 'vue-class-component'
+import { Getter, Action } from 'vuex-class'
+
+@Component
+export default class Cart extends Vue {
+  @Getter('cartProducts') products: CartProduct[]
+  @Getter('checkoutStatus') checkoutStatus: CheckoutStatus
+  @Action('checkout') actionCheckout: Function
+
+  total (): number {
+    return this.products.reduce((total, p) => {
+      return total + p.price * p.quantity
+    }, 0)
   }
-})
+
+  checkout (products: CartProduct[]) {
+    // dispatchCheckout(products)
+    this.actionCheckout(products)
+  }
+}
+
 </script>
