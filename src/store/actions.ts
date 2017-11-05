@@ -1,10 +1,6 @@
 import { Commit, Action, ActionTree } from 'vuex'
 import * as types from './mutation-types'
-import { State, Product } from './index'
-
-export interface AddToCartPayload {
-  id: number
-}
+import { State, Product, AddToCartPayload } from './index'
 
 const addToCart: Action<State, any> = (context: { commit: Commit }, product: Product) => {
   if (product.inventory > 0) {

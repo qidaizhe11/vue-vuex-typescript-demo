@@ -1,8 +1,7 @@
 import { Commit } from 'vuex'
 import shop from '../../api/shop'
 import * as types from '../mutation-types'
-import { AddToCartPayload } from '../actions'
-import { CartProduct, CheckoutStatus } from '../index'
+import { CartProduct, CheckoutStatus, AddToCartPayload } from '../index'
 
 interface Shape {
   id: number

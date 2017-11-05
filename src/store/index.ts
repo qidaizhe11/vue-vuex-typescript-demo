@@ -45,3 +45,7 @@ export interface CartProduct {
   price: number,
   quantity: number
 }
+
+export interface AddToCartPayload {
+  id: number
+}
