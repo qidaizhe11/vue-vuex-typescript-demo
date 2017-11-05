@@ -18,6 +18,8 @@ import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import { CartProduct, CheckoutStatus } from '../store'
 
+// 以下是常规写法：
+
 // import { dispatchCheckout } from '../store/dispatches'
 
 // export default Vue.extend({
@@ -45,6 +47,8 @@ import { CartProduct, CheckoutStatus } from '../store'
 //     }
 //   }
 // })
+
+// 以下是vue-class-component + vuex-class写法：
 
 import Component from 'vue-class-component'
 import { Getter, Action } from 'vuex-class'

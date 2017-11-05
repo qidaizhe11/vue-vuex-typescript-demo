@@ -17,46 +17,50 @@ import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import { Product } from '../store'
 
-// import { dispatchAddToCart } from '../store/dispatches'
+// 以下是常规写法：
 
-// export default Vue.extend({
-//   computed: {
-//     // ...mapGetters({
-//     //   products: 'allProducts'
-//     // })
-//     products (): Product[] {
-//       return this.$store.getters.allProducts
-//     }
-//   },
-//   methods: {
-//     // ...mapActions([
-//     //   'addToCart'
-//     // ])
-//     addToCart (p: Product) {
-//       dispatchAddToCart(p)
-//     }
-//   },
-//   created () {
-//     this.$store.dispatch('getAllProducts')
-//   }
-// })
+import { dispatchAddToCart } from '../store/dispatches'
 
-import Component from 'vue-class-component'
-import { Getter, Action } from 'vuex-class'
-
-@Component
-export default class ProductList extends Vue {
-  @Getter('allProducts') products: Product[]
-  @Action('addToCart') actionAddToCart: any
-  @Action('getAllProducts') getAllProducts: any
-
-  addToCart (p: Product) {
-    this.actionAddToCart(p)
-  }
-
+export default Vue.extend({
+  computed: {
+    // ...mapGetters({
+    //   products: 'allProducts'
+    // })
+    products (): Product[] {
+      return this.$store.getters.allProducts
+    }
+  },
+  methods: {
+    // ...mapActions([
+    //   'addToCart'
+    // ])
+    addToCart (p: Product) {
+      dispatchAddToCart(p)
+    }
+  },
   created () {
-    this.getAllProducts()
+    this.$store.dispatch('getAllProducts')
   }
-}
+})
+
+// 以下是vue-class-component + vuex-class写法：
+
+// import Component from 'vue-class-component'
+// import { Getter, Action } from 'vuex-class'
+
+// @Component
+// export default class ProductList extends Vue {
+//   @Getter('allProducts') products: Product[]
+//   @Action('addToCart') actionAddToCart: any
+//   @Action('getAllProducts') getAllProducts: any
+
+//   addToCart (p: Product) {
+//     this.actionAddToCart(p)
+//   }
+
+//   created () {
+//     this.getAllProducts()
+//   }
+// }
 
 </script>
