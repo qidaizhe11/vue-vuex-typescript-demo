@@ -12,13 +12,13 @@
 
 - 支持 tslint
 
-- 不带 vuex 的纯 vue + vue-router 示例见 basic 分支
+> 不带 vuex 的纯 vue + vue-router 示例见 [basic](https://github.com/qidaizhe11/vue-vuex-typescript-demo/tree/basic) 分支
 
 ## 相关文章
 
 - [Vue2.5+ Typescript 引入全面指南](https://segmentfault.com/a/1190000011853167)
 
-- [Vue2.5+ Typescript 引入全面指南 - Vuex篇]()
+- [Vue2.5+ Typescript 引入全面指南 - Vuex篇](https://segmentfault.com/a/1190000011864013)
 
 ## Build Setup
 
