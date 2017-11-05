@@ -16,7 +16,7 @@
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import { Product } from '../store'
-import { actionAddToCart } from '../store/actions'
+import { dispatchAddToCart } from '../store/dispatches'
 
 export default Vue.extend({
   computed: {
@@ -32,11 +32,30 @@ export default Vue.extend({
     //   'addToCart'
     // ])
     addToCart (p: Product) {
-      actionAddToCart(p)
+      dispatchAddToCart(p)
     }
   },
   created () {
     this.$store.dispatch('getAllProducts')
   }
 })
+
+// import Component from 'vue-class-component'
+// import { Getter, Action } from 'vuex-class'
+
+// @Component
+// export default class ProductList extends Vue {
+//   @Getter('allProducts') products: Product[]
+//   @Action('addToCart') actionAddToCart: any
+//   @Action('getAllProducts') getAllProducts: any
+
+//   addToCart (p: Product) {
+//     this.actionAddToCart(p)
+//   }
+
+//   created () {
+//     this.getAllProducts()
+//   }
+// }
+
 </script>

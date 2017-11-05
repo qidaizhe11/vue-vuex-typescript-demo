@@ -17,7 +17,7 @@
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import { CartProduct, CheckoutStatus } from '../store'
-import { dispatchCheckout } from '../store/actions'
+import { dispatchCheckout } from '../store/dispatches'
 
 export default Vue.extend({
   computed: {
