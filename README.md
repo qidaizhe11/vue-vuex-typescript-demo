@@ -1,6 +1,24 @@
 # vue-vuex-typescript-demo
 
-> A Vue.js project
+> Vue2.5+ + Vuex + Typescript 示例
+
+- 整体基于 [vue-cli](https://github.com/vuejs/vue-cli) [webpack模板](https://github.com/vuejs-templates/webpack) 生成代码改造
+
+- Vuex基于官方 [shopping-cart](https://github.com/vuejs/vuex/tree/dev/examples/shopping-cart) 示例改造
+
+- 支持 [vue-class-component](https://github.com/vuejs/vue-class-component) 及 [vuex-class](https://github.com/ktsn/vuex-class) 组件式写法
+
+- 支持 vue + vuex 原生写法
+
+- 支持 tslint
+
+- 不带 vuex 的纯 vue + vue-router 示例见 basic 分支
+
+## 相关文章
+
+- [Vue2.5+ Typescript 引入全面指南](https://segmentfault.com/a/1190000011853167)
+
+- [Vue2.5+ Typescript 引入全面指南 - Vuex篇]()
 
 ## Build Setup
 
@@ -27,4 +45,6 @@ npm run e2e
 npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## License
+
+MIT
