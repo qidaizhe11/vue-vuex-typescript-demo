@@ -24,7 +24,10 @@ const getters = {
 const actions = {
   getAllProducts (context: ActionContextBasic) {
     shop.getProducts((products: Product[]) => {
-      context.commit(types.RECEIVE_PRODUCTS, { products })
+      const payload: ProductsPayload = {
+        products
+      }
+      context.commit(types.RECEIVE_PRODUCTS, payload)
     })
   }
 }
