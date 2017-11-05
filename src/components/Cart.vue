@@ -59,7 +59,7 @@ export default class Cart extends Vue {
   @Getter('checkoutStatus') checkoutStatus: CheckoutStatus
   @Action('checkout') actionCheckout: Function
 
-  total (): number {
+  get total (): number {
     return this.products.reduce((total, p) => {
       return total + p.price * p.quantity
     }, 0)
