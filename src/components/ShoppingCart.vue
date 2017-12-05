@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="page">
     <h1>Shopping Cart Example</h1>
     <hr>
     <h2>Products</h2>
@@ -17,3 +17,10 @@ export default Vue.extend({
   components: { ProductList, Cart }
 })
 </script>
+
+<style lang="scss" scoped>
+.page {
+  padding: 0 0 40px 0;
+}
+</style>
+
