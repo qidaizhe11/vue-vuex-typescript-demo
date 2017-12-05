@@ -2,9 +2,9 @@
 
 > Vue2.5+ + Vuex + Typescript 示例
 
-- 整体基于 [vue-cli](https://github.com/vuejs/vue-cli) [webpack模板](https://github.com/vuejs-templates/webpack) 生成代码改造
+- 整体基于 [vue-cli](https://github.com/vuejs/vue-cli) [webpack模板](https://github.com/vuejs-templates/webpack) 1.2.5版本生成代码改造
 
-- Vuex基于官方 [shopping-cart](https://github.com/vuejs/vuex/tree/dev/examples/shopping-cart) 示例改造
+- Vuex 基于官方 [shopping-cart](https://github.com/vuejs/vuex/tree/dev/examples/shopping-cart) 示例改造
 
 - 支持 [vue-class-component](https://github.com/vuejs/vue-class-component) 及 [vuex-class](https://github.com/ktsn/vuex-class) 组件式写法
 
@@ -12,7 +12,11 @@
 
 - 支持 tslint
 
-> 不带 vuex 的纯 vue + vue-router 示例见 [basic](https://github.com/qidaizhe11/vue-vuex-typescript-demo/tree/basic) 分支
+- 包含 [element-ui](https://github.com/ElemeFE/element) 示例（2.0 版本，支持按需加载）
+
+- 包含 sass 示例
+
+> 不带 vuex 的纯 vue + vue-router 示例见 [basic 分支](https://github.com/qidaizhe11/vue-vuex-typescript-demo/tree/basic)
 
 ## 相关文章
 
