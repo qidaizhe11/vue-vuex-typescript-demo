@@ -54,9 +54,9 @@ export default Vue.extend({
 
 // @Component
 // export default class ProductList extends Vue {
-//   @Getter('allProducts') products: Product[]
-//   @Action('addToCart') actionAddToCart: any
-//   @Action('getAllProducts') getAllProducts: any
+//   @Getter('allProducts') products!: Product[]
+//   @Action('addToCart') actionAddToCart!: any
+//   @Action('getAllProducts') getAllProducts!: any
 
 //   addToCart (p: Product) {
 //     this.actionAddToCart(p)

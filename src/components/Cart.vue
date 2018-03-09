@@ -70,9 +70,9 @@ import { Getter, Action } from 'vuex-class'
 
 @Component
 export default class Cart extends Vue {
-  @Getter('cartProducts') products: CartProduct[]
-  @Getter('checkoutStatus') checkoutStatus: CheckoutStatus
-  @Action('checkout') actionCheckout: Function
+  @Getter('cartProducts') products!: CartProduct[]
+  @Getter('checkoutStatus') checkoutStatus!: CheckoutStatus
+  @Action('checkout') actionCheckout!: Function
 
   get total (): number {
     return this.products.reduce((total, p) => {
