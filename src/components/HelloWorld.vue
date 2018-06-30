@@ -11,20 +11,20 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'HelloWorld',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
     }
   },
-  mounted () {
+  mounted() {
     this.hello()
     const a = '11'
   },
   methods: {
-    hello () {
-      console.log('Hello world')
-    }
-  }
+    hello() {
+      // console.log('Hello world')
+    },
+  },
 })
 </script>
 

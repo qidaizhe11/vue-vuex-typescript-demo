@@ -11,44 +11,44 @@ export interface State {
 }
 
 // initial state
-const state = {
-  all: []
+const initState = {
+  all: [],
 }
 
 // getters
 const getters = {
-  allProducts: (state: State) => state.all
+  allProducts: (state: State) => state.all,
 }
 
 // actions
 const actions = {
-  getAllProducts (context: ActionContextBasic) {
+  getAllProducts(context: ActionContextBasic) {
     shop.getProducts((products: Product[]) => {
       const payload: ProductsPayload = {
-        products
+        products,
       }
       context.commit(types.RECEIVE_PRODUCTS, payload)
     })
-  }
+  },
 }
 
 // mutations
 const mutations = {
-  [types.RECEIVE_PRODUCTS] (state: State, payload: ProductsPayload) {
+  [types.RECEIVE_PRODUCTS](state: State, payload: ProductsPayload) {
     state.all = payload.products
   },
 
-  [types.ADD_TO_CART] (state: State, payload: AddToCartPayload) {
-    const product = state.all.find(p => p.id === payload.id)
+  [types.ADD_TO_CART](state: State, payload: AddToCartPayload) {
+    const product = state.all.find((p) => p.id === payload.id)
     if (product) {
       product.inventory--
     }
-  }
+  },
 }
 
 export default {
-  state,
+  state: initState,
   getters,
   actions,
-  mutations
+  mutations,
 }

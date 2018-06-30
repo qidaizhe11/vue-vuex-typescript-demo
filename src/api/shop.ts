@@ -4,23 +4,23 @@
 
 import { CartProduct } from '../store'
 
-const _products = [
-  { 'id': 1, 'title': 'iPad 4 Mini', 'price': 500.01, 'inventory': 2 },
-  { 'id': 2, 'title': 'H&M T-Shirt White', 'price': 10.99, 'inventory': 10 },
-  { 'id': 3, 'title': 'Charli XCX - Sucker CD', 'price': 19.99, 'inventory': 5 }
+const initProducts = [
+  { id: 1, title: 'iPad 4 Mini', price: 500.01, inventory: 2 },
+  { id: 2, title: 'H&M T-Shirt White', price: 10.99, inventory: 10 },
+  { id: 3, title: 'Charli XCX - Sucker CD', price: 19.99, inventory: 5 },
 ]
 
 export default {
-  getProducts (cb: Function) {
-    setTimeout(() => cb(_products), 100)
+  getProducts(cb: (products: any[]) => void) {
+    setTimeout(() => cb(initProducts), 100)
   },
 
-  buyProducts (products: CartProduct[], cb: Function, errorCb: Function) {
+  buyProducts(products: CartProduct[], cb: () => void, errorCb: () => void) {
     setTimeout(() => {
       // simulate random checkout failure.
-      (Math.random() > 0.5 || navigator.userAgent.indexOf('PhantomJS') > -1)
+      Math.random() > 0.5 || navigator.userAgent.indexOf('PhantomJS') > -1
         ? cb()
         : errorCb()
     }, 100)
-  }
+  },
 }

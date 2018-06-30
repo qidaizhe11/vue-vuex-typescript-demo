@@ -5,14 +5,14 @@ import { State, Product, AddToCartPayload } from './index'
 const addToCart: Action<State, any> = (context: { commit: Commit }, product: Product) => {
   if (product.inventory > 0) {
     const payload: AddToCartPayload = {
-      id: product.id
+      id: product.id,
     }
     context.commit(types.ADD_TO_CART, payload)
   }
 }
 
 const actions: ActionTree<State, any> = {
-  addToCart
+  addToCart,
 }
 
 export default actions

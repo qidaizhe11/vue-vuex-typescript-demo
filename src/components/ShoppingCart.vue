@@ -14,7 +14,7 @@ import Vue from 'vue'
 import ProductList from './ProductList.vue'
 import Cart from './Cart.vue'
 export default Vue.extend({
-  components: { ProductList, Cart }
+  components: { ProductList, Cart },
 })
 </script>
 

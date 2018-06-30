@@ -4,21 +4,16 @@ import actions from './actions'
 import getters from './getters'
 import cart, { State as CardState } from './modules/cart'
 import products, { State as ProductsState } from './modules/products'
-// import createLogger from '../../../src/plugins/logger'
 
 Vue.use(Vuex)
-
-// const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   actions,
   getters,
   modules: {
     cart,
-    products
-  }
-  // strict: debug,
-  // plugins: debug ? [createLogger()] : []
+    products,
+  },
 })
 
 export interface ActionContextBasic {

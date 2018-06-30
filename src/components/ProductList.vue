@@ -30,39 +30,39 @@ export default Vue.extend({
     // ...mapGetters({
     //   products: 'allProducts'
     // })
-    products (): Product[] {
+    products(): Product[] {
       return this.$store.getters.allProducts
-    }
+    },
   },
   methods: {
     // ...mapActions([
     //   'addToCart'
     // ])
-    addToCart (p: Product) {
+    addToCart(p: Product) {
       dispatchAddToCart(p)
-    }
+    },
   },
-  created () {
+  created() {
     this.$store.dispatch('getAllProducts')
-  }
+  },
 })
 
-// 以下是vue-class-component + vuex-class写法：
+// 以下是vue-property-decorator + vuex-class写法：
 
-// import Component from 'vue-class-component'
+// import { Component } from 'vue-property-decorator'
 // import { Getter, Action } from 'vuex-class'
 
 // @Component
 // export default class ProductList extends Vue {
-//   @Getter('allProducts') products!: Product[]
-//   @Action('addToCart') actionAddToCart!: any
-//   @Action('getAllProducts') getAllProducts!: any
+//   @Getter('allProducts') public products!: Product[]
+//   @Action('addToCart') public actionAddToCart!: any
+//   @Action('getAllProducts') public getAllProducts!: any
 
-//   addToCart (p: Product) {
+//   public addToCart(p: Product) {
 //     this.actionAddToCart(p)
 //   }
 
-//   created () {
+//   public created() {
 //     this.getAllProducts()
 //   }
 // }

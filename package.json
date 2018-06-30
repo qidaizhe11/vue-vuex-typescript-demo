@@ -10,11 +10,13 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "element-ui": "^2.4.2",
     "vue": "^2.5.16",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^6.0.0",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-class": "^0.3.1"
   },
   "devDependencies": {
     "@types/jest": "^22.0.1",
@@ -25,6 +27,7 @@
     "@vue/cli-service": "^3.0.0-beta.15",
     "@vue/test-utils": "^1.0.0-beta.16",
     "babel-core": "7.0.0-bridge.0",
+    "babel-plugin-component": "^1.1.1",
     "lint-staged": "^6.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",

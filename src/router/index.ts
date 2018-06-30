@@ -10,11 +10,11 @@ export default new Router({
     {
       path: '/',
       name: 'Hello',
-      component: HelloWorld
+      component: HelloWorld,
     },
     {
       path: '/vuex',
-      component: ShoppingCart
-    }
-  ]
+      component: ShoppingCart,
+    },
+  ],
 })

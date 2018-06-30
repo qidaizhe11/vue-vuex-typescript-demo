@@ -43,44 +43,44 @@ Vue.use(Tag)
 //     //   products: 'cartProducts',
 //     //   checkoutStatus: 'checkoutStatus'
 //     // }),
-//     products (): CartProduct[] {
+//     products(): CartProduct[] {
 //       return this.$store.getters.cartProducts
 //     },
-//     checkoutStatus (): CheckoutStatus {
+//     checkoutStatus(): CheckoutStatus {
 //       return this.$store.getters.checkoutStatus
 //     },
-//     total (): number {
+//     total(): number {
 //       return this.products.reduce((total, p) => {
 //         return total + p.price * p.quantity
 //       }, 0)
-//     }
+//     },
 //   },
 //   methods: {
-//     checkout (products: CartProduct[]) {
+//     checkout(products: CartProduct[]) {
 //       // this.$store.dispatch('checkout', products)
 //       dispatchCheckout(products)
-//     }
-//   }
+//     },
+//   },
 // })
 
-// 以下是vue-class-component + vuex-class写法：
+// 以下是vue-property-decorator + vuex-class写法：
 
-import Component from 'vue-class-component'
+import { Component } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'
 
 @Component
 export default class Cart extends Vue {
-  @Getter('cartProducts') products!: CartProduct[]
-  @Getter('checkoutStatus') checkoutStatus!: CheckoutStatus
-  @Action('checkout') actionCheckout!: Function
+  @Getter('cartProducts') public products!: CartProduct[]
+  @Getter('checkoutStatus') public checkoutStatus!: CheckoutStatus
+  @Action('checkout') public actionCheckout!: any
 
-  get total (): number {
+  get total(): number {
     return this.products.reduce((total, p) => {
       return total + p.price * p.quantity
     }, 0)
   }
 
-  checkout (products: CartProduct[]) {
+  public checkout(products: CartProduct[]) {
     // dispatchCheckout(products)
     this.actionCheckout(products)
   }
